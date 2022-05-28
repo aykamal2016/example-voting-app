@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    tools {
+     maven   'Maven 3.8.5'
+    }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Compile Java Files '
+                dir(worker){
+                sh 'mvn compile'
+                }
+            }
+        
+        }
+    
+        
+        stage('Test') {
+            steps {
+                echo 'Running Unit Test'
+                sleep 10
+            }
+        
+        }
+  
+       stage('Package') {
+            steps {
+                echo 'Package'
+                sleep 3
+            }
+        
+        }
+    }
+post { 
+        always { 
+            echo 'End Pipelinr'
+        }
+    }
+        
+        
+    
+}
