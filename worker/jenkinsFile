@@ -4,9 +4,12 @@ pipeline {
         maven 'Maven 3.8.5' 
     }
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
+                dir(worker)
+                {
+                  sh 'mvn compile'
+                }
             }
         }
     }
