@@ -1,41 +1,13 @@
 pipeline {
     agent any
     tools {
-     maven   'Maven 3.8.5'
-    }
+        maven 'apache-maven-3.0.1' 
     }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                echo 'Compile Java Files '
-                dir(worker){
-                sh 'mvn compile'
-                }
+                sh 'mvn --version'
             }
-        
-       
-        stage('Test') {
-            steps {
-                echo 'Running Unit Test'
-                sleep 10
-            }
-        
-        }
-  
-       stage('Package') {
-            steps {
-                echo 'Package'
-                sleep 3
-            }
-        
         }
     }
-post { 
-        always { 
-            echo 'End Pipelinr'
-        }
-    }
-        
-        
-    
 }
